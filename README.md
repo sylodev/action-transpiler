@@ -1,6 +1,6 @@
 # @sylo-digital/action-transpiler
 
-Convert actions from legacy formats into the new format. Attempts to rewrite scripts and entire actions to be usable with the upgraded tags.
+Convert scripts from legacy formats into the new format. This can never be perfect but it should be good enough for >99% of actions.
 
 ```ts
 import { convert } from "@sylo-digital/action-transpiler";
