@@ -74,6 +74,9 @@ export class LegacyActionScript {
 
   @t.string.minLength(1).maxLength(15_000)
   message!: string;
+
+  @t.string.optional
+  channel?: string;
 }
 
 export class LegacyAction {

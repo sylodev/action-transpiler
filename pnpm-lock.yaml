@@ -12,6 +12,7 @@ specifiers:
   '@types/node': '14'
   '@typescript-eslint/eslint-plugin': ^5.12.1
   dedent: ^0.7.0
+  discord-api-types: ^0.27.3
   eslint: ^8.10.0
   eslint-plugin-react: ^7.29.2
   eslint-plugin-react-hooks: ^4.3.0
@@ -34,6 +35,7 @@ devDependencies:
   '@types/jest': 27.4.1
   '@types/node': 14.17.6
   '@typescript-eslint/eslint-plugin': 5.12.1_eslint@8.10.0+typescript@4.5.5
+  discord-api-types: 0.27.3
   eslint: 8.10.0
   eslint-plugin-react: 7.29.2_eslint@8.10.0
   eslint-plugin-react-hooks: 4.3.0_eslint@8.10.0
@@ -1913,6 +1915,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       path-type: 4.0.0
+    dev: true
+
+  /discord-api-types/0.27.3:
+    resolution: {integrity: sha512-HOG64DTpZ7CB5EU9eKbjHD50H5qG1pxKG8pmFfHUMKjKvEWeLBHfw0c9xF1cruiYLnBb3+n7m3jBWxZ3H1hcgQ==}
     dev: true
 
   /doctrine/2.1.0:
