@@ -6,7 +6,7 @@ import { Node } from "../types";
  */
 export const traverse = (
   tree: Node,
-  handler: (node: Node, over?: Node) => Node | undefined,
+  handler: (node: Node, over?: Node) => Node | undefined | void,
   over?: Node
 ): Node | undefined => {
   const result = handler(tree, over);
@@ -20,9 +20,9 @@ export const traverse = (
       tree.children[tree.children.indexOf(child)] = result;
     }
 
-    for (let grandChildIndex = 0; grandChildIndex < tree.children.length; grandChildIndex++) {
-      const over = tree.children[grandChildIndex + 1];
-      const grandChild = tree.children[grandChildIndex];
+    for (let grandChildIndex = 0; grandChildIndex < child.children.length; grandChildIndex++) {
+      const over = child.children[grandChildIndex + 1];
+      const grandChild = child.children[grandChildIndex];
       const result = traverse(grandChild, handler, over);
       if (result) {
         child.children[child.children.indexOf(grandChild)] = result;

@@ -1,4 +1,11 @@
-export type Converter = (tree: Node) => void;
+export type Converter = (tree: Node, script: ScriptOptions) => void;
+
+export interface ScriptOptions {
+  appendBefore: string[];
+  appendAfter: string[];
+  warnings: string[];
+  source: string;
+}
 
 export interface Node {
   type: NodeType;

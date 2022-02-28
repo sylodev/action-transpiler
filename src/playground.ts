@@ -1,10 +1,9 @@
 import dedent from "dedent";
+import { writeFileSync } from "fs";
 import { convert } from "./convert";
 
-const input = dedent`
-    {note;poggers}
-    {user.mention;{note;test}}
-`;
+const input = dedent`{note;balls}`;
 
 const result = convert(input);
 console.log({ input, result });
+writeFileSync("output.txt", result);
