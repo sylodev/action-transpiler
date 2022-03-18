@@ -1,3 +1,4 @@
+import { replaceAdvancedEmbed } from "./conversions/replace-advancedembed";
 import { replaceArgs } from "./conversions/replace-args";
 import { replaceBrackets } from "./conversions/replace-brackets";
 import { replaceDelete } from "./conversions/replace-delete";
@@ -13,14 +14,14 @@ const converters: Converter[] = [
   replaceBrackets,
   replaceVariables,
   replaceDelete,
+  replaceAdvancedEmbed,
 ];
 
-export function convert(script: string): string {
-  const options: ScriptOptions = { appendAfter: [], appendBefore: [], source: script, warnings: [] };
+export function convert(script: string) {
+  const options: ScriptOptions = { appendAfter: [], appendBefore: [], source: script, warnings: [], errors: [] };
   const lexer = new Lexer(script);
   const tree = lexer.parse();
   for (const converter of converters) {
-    console.log(converter);
     converter(tree, options);
   }
 
@@ -37,5 +38,9 @@ export function convert(script: string): string {
     text = text + "\n" + options.appendAfter.join("\n");
   }
 
-  return text.trim();
+  return {
+    output: text.trim(),
+    warnings: options.warnings,
+    errors: options.errors,
+  };
 }

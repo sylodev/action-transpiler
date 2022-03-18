@@ -4,6 +4,7 @@ export interface ScriptOptions {
   appendBefore: string[];
   appendAfter: string[];
   warnings: string[];
+  errors: string[];
   source: string;
 }
 
