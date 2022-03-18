@@ -1,6 +1,7 @@
 import { replaceAdvancedEmbed } from "./conversions/replace-advancedembed";
 import { replaceArgs } from "./conversions/replace-args";
 import { replaceBrackets } from "./conversions/replace-brackets";
+import { replaceCommandTags } from "./conversions/replace-command-tags";
 import { replaceDelete } from "./conversions/replace-delete";
 import { replaceNotesWithComments } from "./conversions/replace-notes-with-comments";
 import { replaceVariables } from "./conversions/replace-variables";
@@ -15,6 +16,7 @@ const converters: Converter[] = [
   replaceVariables,
   replaceDelete,
   replaceAdvancedEmbed,
+  replaceCommandTags,
 ];
 
 export function convert(script: string) {
