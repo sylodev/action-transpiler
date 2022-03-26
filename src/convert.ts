@@ -4,6 +4,7 @@ import { replaceBrackets } from "./conversions/replace-brackets";
 import { replaceCommandTags } from "./conversions/replace-command-tags";
 import { replaceDelete } from "./conversions/replace-delete";
 import { replaceNotesWithComments } from "./conversions/replace-notes-with-comments";
+import { replacePerset } from "./conversions/replace-perset";
 import { replaceVariables } from "./conversions/replace-variables";
 import { treeToText } from "./helpers/tree-to-text";
 import { Lexer } from "./lexer";
@@ -17,6 +18,7 @@ const converters: Converter[] = [
   replaceDelete,
   replaceAdvancedEmbed,
   replaceCommandTags,
+  replacePerset,
 ];
 
 export function convert(script: string) {
