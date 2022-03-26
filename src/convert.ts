@@ -2,25 +2,21 @@ import { replaceAdvancedEmbed } from "./conversions/replace-advancedembed";
 import { replaceArgs } from "./conversions/replace-args";
 import { replaceBrackets } from "./conversions/replace-brackets";
 import { replaceCommandTags } from "./conversions/replace-command-tags";
-import { replaceDelete } from "./conversions/replace-delete";
+import { replaceGeneric } from "./conversions/replace-generic";
 import { replaceNotesWithComments } from "./conversions/replace-notes-with-comments";
-import { replacePerset } from "./conversions/replace-perset";
 import { replaceVariables } from "./conversions/replace-variables";
 import { treeToText } from "./helpers/tree-to-text";
 import { Lexer } from "./lexer";
 import { Converter, ScriptOptions } from "./types";
-import { replaceIf } from "./conversions/replace-if";
 
 const converters: Converter[] = [
   replaceNotesWithComments,
   replaceArgs,
   replaceBrackets,
   replaceVariables,
-  replaceDelete,
   replaceAdvancedEmbed,
   replaceCommandTags,
-  replacePerset,
-  replaceIf,
+  replaceGeneric,
 ];
 
 export function convert(script: string) {
