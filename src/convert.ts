@@ -10,13 +10,13 @@ import { Lexer } from "./lexer";
 import { Converter, ScriptOptions } from "./types";
 
 const converters: Converter[] = [
-  replaceNotesWithComments,
+  replaceGeneric,
   replaceArgs,
+  replaceNotesWithComments,
   replaceBrackets,
   replaceVariables,
-  replaceAdvancedEmbed,
   replaceCommandTags,
-  replaceGeneric,
+  replaceAdvancedEmbed, // must be last
 ];
 
 export function convert(script: string) {

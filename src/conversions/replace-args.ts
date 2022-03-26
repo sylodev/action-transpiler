@@ -26,7 +26,7 @@ const variablePolyfill = dedent`
 `;
 
 export function replaceArgs(tree: Node, options: ScriptOptions): void {
-  traverse(tree, (node, over) => {
+  traverse(tree, (node) => {
     if (node.type === NodeType.CALL && node.text === "args") {
       if (!node.children[0]) {
         if (!options.appendBefore.includes(variablePolyfill)) {

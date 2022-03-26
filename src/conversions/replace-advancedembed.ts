@@ -6,7 +6,7 @@ import { traverse } from "../helpers/traverse";
 import { treeToText } from "../helpers/tree-to-text";
 import { Node, NodeType, ScriptOptions } from "../types";
 
-const ADVANCED_EMBED_TAG_NAMES = new Set(["a!advancedembed", "a!ae"]);
+const ADVANCED_EMBED_TAG_NAMES = new Set(["a!advancedembed", "a!ae", "/advancedembed", "/ae"]);
 const FIELD_REGEX = /field([0-9])value/i;
 const ESCAPED_NEWLINE_REGEX = /\\n/g;
 
@@ -76,7 +76,7 @@ function parseParametersToEmbed(parameters: string[]) {
 }
 
 export function replaceAdvancedEmbed(tree: Node, options: ScriptOptions): void {
-  traverse(tree, (node, over) => {
+  traverse(tree, (node) => {
     if (node.type === NodeType.CALL && ADVANCED_EMBED_TAG_NAMES.has(node.text.toLowerCase())) {
       const parameters = node.children.map((node) => treeToText(node));
       const embed = parseParametersToEmbed(parameters);

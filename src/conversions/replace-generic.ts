@@ -13,6 +13,9 @@ export function replaceGeneric(tree: Node) {
   traverse(tree, (node) => {
     if (node.type !== NodeType.CALL) return;
     const replacement = REPLACEMENTS.get(node.text.toLowerCase());
-    if (replacement) node.text = replacement;
+    if (replacement) {
+      node.text = replacement;
+      return node;
+    }
   });
 }

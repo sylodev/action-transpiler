@@ -17,9 +17,8 @@ it("should replace top-level notes", () => {
 });
 
 it("should add new lines if necessary", () => {
-  const script = `{note;poggers}{user.mention}`;
-  const result = convert(script).output;
-  expect(result).toBe(`// poggers\n{user.mention}`);
+  expect(convert(`{note;poggers}{user.mention}`).output).toBe(`// poggers\n{user.mention}`);
+  expect(convert(`{note;poggers}\n{user.mention}`).output).toBe(`// poggers\n{user.mention}`);
 });
 
 it("should replace nested notes with {void}", () => {

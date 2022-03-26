@@ -13,14 +13,14 @@ export function replaceNotesWithComments(tree: Node): void {
         return;
       }
 
-      const tree: Node = {
+      const needsNewLine = !over?.text.startsWith("\n");
+      const replacement: Node = {
         type: NodeType.TEXT,
-        text: `// ${node.children.map((child) => treeToText(child)).join(" ")}`,
+        text: `// ${node.children.map((child) => treeToText(child)).join(" ")}${needsNewLine ? "\n" : ""}`,
         children: [],
       };
 
-      if (over && !over.text.startsWith("\n")) tree.text += "\n";
-      return tree;
+      return replacement;
     }
   });
 }

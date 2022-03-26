@@ -4,29 +4,24 @@ import { Node } from "../types";
  * Traverse a tree.
  * @param handler The handler to call for each node. If it returns a node, that node will be replaced with the return value.
  */
-export const traverse = (
-  tree: Node,
-  handler: (node: Node, over?: Node) => Node | undefined | void,
-  over?: Node
-): Node | undefined => {
-  const result = handler(tree, over);
-  if (result) return result;
-
-  for (let childIndex = 0; childIndex < tree.children.length; childIndex++) {
-    const child = tree.children[childIndex];
-    const over = tree.children[childIndex + 1];
-    const result = traverse(child, handler, over);
-    if (result) {
-      tree.children[tree.children.indexOf(child)] = result;
-    }
-
-    for (let grandChildIndex = 0; grandChildIndex < child.children.length; grandChildIndex++) {
-      const over = child.children[grandChildIndex + 1];
-      const grandChild = child.children[grandChildIndex];
-      const result = traverse(grandChild, handler, over);
-      if (result) {
-        child.children[child.children.indexOf(grandChild)] = result;
+export const traverse = (tree: Node, handler: (node: Node, over?: Node) => Node | undefined | void): void => {
+  if (tree.parent) throw new Error("Cannot traverse a tree that has a parent");
+  const check = (node: Node, over?: Node) => {
+    // doing children first is important because some tags will return
+    // a raw node containing treeToString() of their children, which would mean
+    // the children are stringified without the potential updates required for them.
+    for (let childIndex = 0; childIndex < node.children.length; childIndex++) {
+      const child = node.children[childIndex];
+      const childReplacement = check(child, node.children[childIndex + 1]);
+      if (childReplacement) {
+        node.children[childIndex] = childReplacement;
       }
     }
-  }
+
+    return handler(node, over);
+  };
+
+  // this means top-level changes to the root node will be missed, but
+  // nothing should really be done to the root node anyway so its fine to silently ignore.
+  check(tree);
 };
