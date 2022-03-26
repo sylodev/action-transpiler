@@ -9,6 +9,7 @@ import { replaceVariables } from "./conversions/replace-variables";
 import { treeToText } from "./helpers/tree-to-text";
 import { Lexer } from "./lexer";
 import { Converter, ScriptOptions } from "./types";
+import { replaceIf } from "./conversions/replace-if";
 
 const converters: Converter[] = [
   replaceNotesWithComments,
@@ -19,6 +20,7 @@ const converters: Converter[] = [
   replaceAdvancedEmbed,
   replaceCommandTags,
   replacePerset,
+  replaceIf,
 ];
 
 export function convert(script: string) {
