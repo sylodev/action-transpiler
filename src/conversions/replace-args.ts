@@ -11,18 +11,21 @@ const functionPolyfill = dedent`
     // This function has been injected for backwards compatibility.
     // You should update your action to use the new {option} tag when possible.
     [#function;legacy_args;{=position};{=end}]
-        // "input" is added during import.
-        {=args;{split;{option;input};/ +/g}}
-        {#if;{and;{$position};{$end}};{#return;{slice;{$args};{$position};{$end}}}}
-        {#if;{$position};{#return;{$args.{$position}}}}
-        {#return;{join;{$args}; }}
-    [/function]
+      // {args} used one-based indexing, so we subtract one to get zero-based indexing.
+      {#if;{$position};{=position;{math;{$position} - 1}}}
+      {#if;{$end};{=end;{math;{$end} - 1}}}
+      // "input" is added during import.
+      {=args;{split;{option;input};/ +/g}}
+      {#if;{and;{$position};{$end}};{#return;{join;{slice;{$args};{$position};{$end}}; }}}
+      {#if;{$position};{#return;{$args.{$position}}}}
+      {#return;{join;{$args}; }}
+  [/function]\n
 `;
 
 const variablePolyfill = dedent`
     // This variable has been injected for backwards compatibility, replacing parameterless calls to {args}.
     // You should update your action to use the new {option} tag when possible.
-    {=legacy_args;{option;input}}
+    {=legacy_args;{option;input}}\n
 `;
 
 export function replaceArgs(tree: Node, options: ScriptOptions): void {
