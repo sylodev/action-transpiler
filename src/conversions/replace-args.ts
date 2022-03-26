@@ -30,6 +30,7 @@ export function replaceArgs(tree: Node, options: ScriptOptions): void {
     if (node.type === NodeType.CALL && node.text === "args") {
       if (!node.children[0]) {
         if (!options.appendBefore.includes(variablePolyfill)) {
+          options.injectInputOption = true;
           options.appendBefore.push(variablePolyfill);
         }
 
@@ -45,6 +46,7 @@ export function replaceArgs(tree: Node, options: ScriptOptions): void {
       } else {
         node.text = "legacy_args";
         if (!options.appendBefore.includes(functionPolyfill)) {
+          options.injectInputOption = true;
           options.appendBefore.push(functionPolyfill);
         }
       }

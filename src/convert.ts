@@ -20,7 +20,15 @@ const converters: Converter[] = [
 ];
 
 export function convert(script: string) {
-  const options: ScriptOptions = { appendAfter: [], appendBefore: [], source: script, warnings: [], errors: [] };
+  const options: ScriptOptions = {
+    appendAfter: [],
+    appendBefore: [],
+    source: script,
+    warnings: [],
+    errors: [],
+    injectInputOption: false,
+  };
+
   const lexer = new Lexer(script);
   const tree = lexer.parse();
   for (const converter of converters) {
@@ -44,5 +52,6 @@ export function convert(script: string) {
     output: text.trim(),
     warnings: options.warnings,
     errors: options.errors,
+    injectInputOption: options.injectInputOption,
   };
 }

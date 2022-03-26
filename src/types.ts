@@ -6,6 +6,7 @@ export interface ScriptOptions {
   warnings: string[];
   errors: string[];
   source: string;
+  injectInputOption: boolean;
 }
 
 export interface Node {
