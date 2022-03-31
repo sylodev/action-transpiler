@@ -7,6 +7,7 @@ const REPLACEMENTS = new Map([
   ["perget", "store.get"],
   ["delete", "message.delete"],
   ["utils.isurl", "isUrl"],
+  ["message.react", "message.addReaction"],
 ]);
 
 export function replaceGeneric(tree: Node) {

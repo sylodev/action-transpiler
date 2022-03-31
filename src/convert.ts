@@ -1,8 +1,10 @@
 import { replaceAdvancedEmbed } from "./conversions/replace-advancedembed";
 import { replaceArgs } from "./conversions/replace-args";
 import { replaceBrackets } from "./conversions/replace-brackets";
+import { replaceCreatedAt } from "./conversions/replace-createdAt";
 import { replaceCommandTags } from "./conversions/replace-command-tags";
 import { replaceGeneric } from "./conversions/replace-generic";
+import { replaceMessageTimestamp } from "./conversions/replace-message-timestamp";
 import { replaceNotesWithComments } from "./conversions/replace-notes-with-comments";
 import { replaceVariables } from "./conversions/replace-variables";
 import { treeToText } from "./helpers/tree-to-text";
@@ -16,6 +18,8 @@ const converters: Converter[] = [
   replaceBrackets,
   replaceVariables,
   replaceCommandTags,
+  replaceMessageTimestamp,
+  replaceCreatedAt,
   replaceAdvancedEmbed, // must be last
 ];
 
