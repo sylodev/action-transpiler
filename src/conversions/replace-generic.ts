@@ -8,6 +8,7 @@ const REPLACEMENTS = new Map([
   ["delete", "message.delete"],
   ["utils.isurl", "isUrl"],
   ["message.react", "message.addReaction"],
+  ["range", "randomInt"],
 ]);
 
 export function replaceGeneric(tree: Node) {
