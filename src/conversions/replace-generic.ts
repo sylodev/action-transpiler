@@ -9,6 +9,8 @@ const REPLACEMENTS = new Map([
   ["utils.isurl", "isUrl"],
   ["message.react", "message.addReaction"],
   ["range", "randomInt"],
+  ["utils.timestamp", "time"],
+  ["utils.isSnowflake", "isSnowflake"],
 ]);
 
 export function replaceGeneric(tree: Node) {
