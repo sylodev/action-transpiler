@@ -13,7 +13,7 @@ export function replaceLowerUpper(tree: Node) {
     if (!mode) return;
     return {
       type: NodeType.CALL,
-      text: `casing mode=${mode}`,
+      text: `casing mode="${mode}"`,
       children: node.children,
     };
   });
