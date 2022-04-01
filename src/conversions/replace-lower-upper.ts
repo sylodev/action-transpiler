@@ -4,6 +4,7 @@ import { Node, NodeType } from "../types";
 const REPLACE_MODES = new Map([
   ["lower", "lower"],
   ["upper", "upper"],
+  ["utils.capitalize", "title"],
 ]);
 
 export function replaceLowerUpper(tree: Node) {
