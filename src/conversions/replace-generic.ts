@@ -11,6 +11,7 @@ const REPLACEMENTS = new Map([
   ["range", "randomInt"],
   ["utils.timestamp", "time"],
   ["utils.isSnowflake", "isSnowflake"],
+  ["utils.includes", "includes"],
 ]);
 
 export function replaceGeneric(tree: Node) {
