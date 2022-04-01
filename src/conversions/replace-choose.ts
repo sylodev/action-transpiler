@@ -4,7 +4,7 @@ import { Node, NodeType } from "../types";
 
 export function replaceChoose(tree: Node) {
   traverse(tree, (node) => {
-    if (node.text.toLowerCase() !== "choose") return;
+    if (node.type !== NodeType.CALL || node.text.toLowerCase() !== "choose") return;
     return {
       type: NodeType.CALL,
       text: "random",

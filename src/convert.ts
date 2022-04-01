@@ -5,6 +5,7 @@ import { replaceChoose } from "./conversions/replace-choose";
 import { replaceCommandTags } from "./conversions/replace-command-tags";
 import { replaceCreatedAt } from "./conversions/replace-createdAt";
 import { replaceGeneric } from "./conversions/replace-generic";
+import { replaceLowerUpper } from "./conversions/replace-lower-upper";
 import { replaceMessageTimestamp } from "./conversions/replace-message-timestamp";
 import { replaceNotesWithComments } from "./conversions/replace-notes-with-comments";
 import { replaceVariables } from "./conversions/replace-variables";
@@ -22,6 +23,7 @@ const converters: Converter[] = [
   replaceMessageTimestamp,
   replaceCreatedAt,
   replaceChoose,
+  replaceLowerUpper,
   replaceAdvancedEmbed, // must be last
 ];
 
