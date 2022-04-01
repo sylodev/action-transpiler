@@ -5,7 +5,6 @@ import { Node } from "../types";
  * @param handler The handler to call for each node. If it returns a node, that node will be replaced with the return value.
  */
 export const traverse = (tree: Node, handler: (node: Node, over?: Node) => Node | undefined | void): void => {
-  if (tree.parent) throw new Error("Cannot traverse a tree that has a parent");
   const check = (node: Node, over?: Node) => {
     // doing children first is important because some tags will return
     // a raw node containing treeToString() of their children, which would mean
@@ -21,7 +20,10 @@ export const traverse = (tree: Node, handler: (node: Node, over?: Node) => Node 
     return handler(node, over);
   };
 
-  // this means top-level changes to the root node will be missed, but
-  // nothing should really be done to the root node anyway so its fine to silently ignore.
-  check(tree);
+  const updated = check(tree);
+  if (updated) {
+    for (const key of Object.keys(updated)) {
+      (tree as any)[key] = (updated as any)[key];
+    }
+  }
 };
