@@ -8,6 +8,7 @@ import { replaceGeneric } from "./conversions/replace-generic";
 import { replaceLowerUpper } from "./conversions/replace-lower-upper";
 import { replaceMessageTimestamp } from "./conversions/replace-message-timestamp";
 import { replaceNotesWithComments } from "./conversions/replace-notes-with-comments";
+import { replacePrettyMs } from "./conversions/replace-prettyMs";
 import { replaceRandstr } from "./conversions/replace-randstr";
 import { replaceVariables } from "./conversions/replace-variables";
 import { treeToText } from "./helpers/tree-to-text";
@@ -26,6 +27,7 @@ const converters: Converter[] = [
   replaceChoose,
   replaceLowerUpper,
   replaceRandstr,
+  replacePrettyMs,
   replaceAdvancedEmbed, // must be last
 ];
 
