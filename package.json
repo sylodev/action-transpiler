@@ -1,6 +1,6 @@
 {
   "name": "@sylo-digital/action-transpiler",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "repository": "https://github.com/sylo-digital/action-transpiler.git",
   "author": "Ryan <ryan@sylver.me>",
   "license": "MIT",
