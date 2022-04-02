@@ -2,7 +2,6 @@ import { traverse } from "../helpers/traverse";
 import { Node, NodeType } from "../types";
 
 const REPLACEMENTS = new Map([
-  ["if", "#if"],
   ["perset", "store.set"],
   ["perget", "store.get"],
   ["delete", "message.delete"],
