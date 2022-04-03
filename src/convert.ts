@@ -10,6 +10,7 @@ import { replaceMessageTimestamp } from "./conversions/replace-message-timestamp
 import { replaceNotesWithComments } from "./conversions/replace-notes-with-comments";
 import { replacePrettyMs } from "./conversions/replace-prettyMs";
 import { replaceRandstr } from "./conversions/replace-randstr";
+import { replaceUserChannelSend } from "./conversions/replace-user-channel-send";
 import { replaceVariables } from "./conversions/replace-variables";
 import { treeToText } from "./helpers/tree-to-text";
 import { Lexer } from "./lexer";
@@ -28,6 +29,7 @@ const converters: Converter[] = [
   replaceLowerUpper,
   replaceRandstr,
   replacePrettyMs,
+  replaceUserChannelSend,
   replaceAdvancedEmbed, // must be last
 ];
 

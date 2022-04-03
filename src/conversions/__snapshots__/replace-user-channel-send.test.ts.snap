@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should rename {channel.send} and inject the polyfill 1`] = `
+Object {
+  "errors": Array [],
+  "injectInputOption": false,
+  "output": "// This function has been injected to replace functionality of a legacy {channel.send} tag.
+[#function;legacy_channel_send;{=message};{=channel}]
+    {responder.text;{$message}} // Add the text to the responder
+    {=channelId;{or;{$channel};{channel.id}}} // Get the channel we're sending to
+    {responder.channel;{$channelId}} // Configure the responder to send the message to the channel
+    {responder.send} // Send the message
+[/function]
+{legacy_channel_send}",
+  "warnings": Array [],
+}
+`;
+
+exports[`should rename {channel.send} and inject the polyfill 2`] = `
+Object {
+  "errors": Array [],
+  "injectInputOption": false,
+  "output": "// This function has been injected to replace functionality of a legacy {channel.send} tag.
+[#function;legacy_channel_send;{=message};{=channel}]
+    {responder.text;{$message}} // Add the text to the responder
+    {=channelId;{or;{$channel};{channel.id}}} // Get the channel we're sending to
+    {responder.channel;{$channelId}} // Configure the responder to send the message to the channel
+    {responder.send} // Send the message
+[/function]
+{legacy_channel_send;message}",
+  "warnings": Array [],
+}
+`;
+
+exports[`should rename {channel.send} and inject the polyfill 3`] = `
+Object {
+  "errors": Array [],
+  "injectInputOption": false,
+  "output": "// This function has been injected to replace functionality of a legacy {channel.send} tag.
+[#function;legacy_channel_send;{=message};{=channel}]
+    {responder.text;{$message}} // Add the text to the responder
+    {=channelId;{or;{$channel};{channel.id}}} // Get the channel we're sending to
+    {responder.channel;{$channelId}} // Configure the responder to send the message to the channel
+    {responder.send} // Send the message
+[/function]
+{legacy_channel_send;message;channel}",
+  "warnings": Array [],
+}
+`;
+
+exports[`should rename {user.send} and inject the polyfill 1`] = `
+Object {
+  "errors": Array [],
+  "injectInputOption": false,
+  "output": "// This function has been injected to replace functionality of a legacy {user.send} tag.
+[#function;legacy_user_send;{=message};{=user}]
+    {responder.text;{$message}} // Add the text to the responder
+    {=userId;{or;{$user};{user.id}}} // Get the user we're sending to
+    {responder.dm;{$userId}} // Configure the responder to direct-message the user
+    {responder.send} // Send the message
+[/function]
+{legacy_user_send}",
+  "warnings": Array [],
+}
+`;
+
+exports[`should rename {user.send} and inject the polyfill 2`] = `
+Object {
+  "errors": Array [],
+  "injectInputOption": false,
+  "output": "// This function has been injected to replace functionality of a legacy {user.send} tag.
+[#function;legacy_user_send;{=message};{=user}]
+    {responder.text;{$message}} // Add the text to the responder
+    {=userId;{or;{$user};{user.id}}} // Get the user we're sending to
+    {responder.dm;{$userId}} // Configure the responder to direct-message the user
+    {responder.send} // Send the message
+[/function]
+{legacy_user_send;message}",
+  "warnings": Array [],
+}
+`;
+
+exports[`should rename {user.send} and inject the polyfill 3`] = `
+Object {
+  "errors": Array [],
+  "injectInputOption": false,
+  "output": "// This function has been injected to replace functionality of a legacy {user.send} tag.
+[#function;legacy_user_send;{=message};{=user}]
+    {responder.text;{$message}} // Add the text to the responder
+    {=userId;{or;{$user};{user.id}}} // Get the user we're sending to
+    {responder.dm;{$userId}} // Configure the responder to direct-message the user
+    {responder.send} // Send the message
+[/function]
+{legacy_user_send;message;user}",
+  "warnings": Array [],
+}
+`;
