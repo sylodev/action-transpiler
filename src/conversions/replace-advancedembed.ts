@@ -19,11 +19,13 @@ const cleanString = (input: string) => {
 // a cleaner output
 function parseParametersToEmbed(parameters: string[]) {
   // join() is necessary because some parameters can have multiple flags
-  const parsedArgs = parseArgs(parameters.join(" "), {
+  const parsedArgs = parseArgs(parameters.map((param) => param.trim()).join(" "), {
     configuration: {
       "parse-numbers": false,
     },
   });
+
+  console.log({ parameters, parsedArgs });
 
   let color;
   if (parsedArgs.color || parsedArgs.colour) {
@@ -81,14 +83,6 @@ export function replaceAdvancedEmbed(tree: Node, options: ScriptOptions): void {
       const parameters = node.children.map((node) => treeToText(node));
       const embed = parseParametersToEmbed(parameters);
       const hasIndentation = parameters.some((param) => param.trim() !== param);
-      if (!embed.description) {
-        const asString = treeToText(node);
-        const warning = `Could not convert the following a!advancedembed into a {responder.embed} tag:\n${asString}`;
-        options.errors.push(warning);
-        return;
-      }
-
-      // it would be nice to use "proper" formatting but that is far too much work.
       const json = hasIndentation ? JSON.stringify(embed, null, 2) : JSON.stringify(embed);
 
       return {

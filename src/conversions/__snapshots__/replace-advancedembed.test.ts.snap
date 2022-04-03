@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should convert embeds with no description 1`] = `
+"{responder.embed;{{
+  \\"color\\": 10737070,
+  \\"title\\": \\"{$legacy_args}\\",
+  \\"footer\\": {
+    \\"icon_url\\": \\"{user.avatar}\\",
+    \\"text\\": \\"{user.tag}\\"
+  },
+  \\"timestamp\\": \\"2022-04-03T15:49:18.989Z\\"
+}}}"
+`;
+
+exports[`should convert nested tags 1`] = `
+"// This function has been injected to replace functionality of a legacy {channel.send} tag.
+[#function;legacy_channel_send;{=message};{=channel}]
+    {responder.text;{$message}} // Add the text to the responder
+    {=channelId;{or;{$channel};{channel.id}}} // Get the channel we're sending to
+    {responder.channel;{$channelId}} // Configure the responder to send the message to the channel
+    {responder.send} // Send the message
+[/function]
+{legacy_channel_send;
+  {responder.embed;{{
+  \\"color\\": 10737070,
+  \\"title\\": \\"Location Roles\\",
+  \\"description\\": \\"React on the message to chose your Hemisphere:\\",
+  \\"fields\\": [
+    {
+      \\"name\\": \\"Pick One\\",
+      \\"inline\\": true,
+      \\"value\\": \\":spider: - {role.mention;702325354748182548}\\\\n:scorpion: - {role.mention;702325340105736303}\\"
+    }
+  ]
+}}};723698264511086624}"
+`;
