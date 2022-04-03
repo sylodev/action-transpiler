@@ -8,6 +8,7 @@ const REPLACEMENTS = new Map([
   ["utils.isurl", "isUrl"],
   ["message.react", "message.addReaction"],
   ["range", "randomInt"],
+  ["user.avatarurl", "user.avatar"],
   ["utils.timestamp", "time"],
   ["utils.isSnowflake", "isSnowflake"],
   ["utils.includes", "includes"],
